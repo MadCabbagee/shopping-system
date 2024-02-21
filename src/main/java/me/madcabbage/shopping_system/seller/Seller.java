@@ -1,15 +1,34 @@
 package me.madcabbage.shopping_system.seller;
 
-import java.util.ArrayList;
+import java.util.*;
+
 
 public class Seller {
     //String id; make an ID for every thing e.g. Shipper ID would start SHP-001
-    String name;
-    String description;
-    ArrayList<Product> productArrayList; //Array list to add the sellers products
+    private String name;
+    private String description;
+    private ArrayList<Product> productArrayList; //Array list to add the sellers products
 
-    Seller(){
+    //create new seller
+   public Seller(String name, String description, ArrayList<Product> productArrayList){
 
+       this.name = name;
+       this.description = description;
+       this.productArrayList = productArrayList;
+    }
+
+    //seller but no product given
+    public Seller(String name, String description){
+       this(name,description,new ArrayList<Product>());
+    }
+
+    //seller initialization but one product is given
+    public Seller(String name, String description, Product product){
+        //Not sure yet if this works maybe create a function for it
+        this.name = name;
+        this.description = description;
+        this.productArrayList = new ArrayList<Product>();
+        productArrayList.add(product);
     }
 
     //Getter Methods
@@ -35,6 +54,27 @@ public class Seller {
         this.productArrayList = productArrayList;
     }
 
-    //Prompt Setter Methods
+    //adder Methods
+    public void addProduct(Product product){
+       productArrayList.add(product);
+    }
+    public void addProductArrayList(ArrayList<Product> productArrayList){
 
+        for (int i = 0; i < productArrayList.size(); i++) {
+            Product product = productArrayList.get(i);
+            addProduct(product);
+        }
+    }
+    public void removeProduct(Product productToBeDeleted)
+    {
+       productArrayList.remove(productToBeDeleted);
+    }
+    public void removeProductArrayList(ArrayList<Product> productArrayList){
+
+       for (Product product : productArrayList)
+       {
+           removeProduct(product);
+       }
+    }
 }
+
