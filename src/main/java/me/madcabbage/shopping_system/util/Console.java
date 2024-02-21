@@ -64,7 +64,7 @@ public class Console {
             }
 
             if (chosenAnswer == null) {
-                System.out.println("Incorrect choice. Please enter the corresponding number or the choice text.");
+                System.out.println("\nIncorrect choice. Please enter the corresponding number or the choice text.");
             }
         }
         return chosenAnswer;
@@ -72,7 +72,7 @@ public class Console {
 
     private static String parseAnswerFromInt(String input, String[] choices) {
         int choice = Integer.parseInt(input);
-        if (choice - 1 < choices.length) {
+        if (choice - 1 < choices.length && choice - 1 >= 0) {
             return choices[choice-1];
         }
         return null;
