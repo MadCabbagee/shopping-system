@@ -1,6 +1,6 @@
 package me.madcabbage.shopping_system.seller;
 
-public enum productType {
+public enum ProductType {
     BEAUTY_PRODUCTS("Beauty Products"),
     BOOKS_AND_STATIONARY("Books and Stationary"),
     CABBAGES("Cabbages"),
@@ -13,10 +13,11 @@ public enum productType {
     HOME_KITCHEN_APPLIANCES("Home And Kitchen Appliances"),
     MEDICINE("Medicine"),
     SPORTS_GOOD("Sports Goods"),
-    TOYS_AND_GAMES("Toys And Games");
+    TOYS_AND_GAMES("Toys And Games"),
+    UNCATEGORIZED("Uncategorized");
 
     private final String productName;
-    private productType(String productName) {
+    private ProductType(String productName) {
         this.productName = productName;
     }
     public String getProductName() {
