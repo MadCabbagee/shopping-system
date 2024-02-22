@@ -1,6 +1,6 @@
 package me.madcabbage.shopping_system.seller;
-
-import java.util.*;
+import me.madcabbage.shopping_system.product.Product;
+import java.util.ArrayList;
 
 
 public class Seller {
@@ -58,7 +58,7 @@ public class Seller {
     public void addProduct(Product product){
        productArrayList.add(product);
     }
-    public void addProductArrayList(ArrayList<Product> productArrayList){
+    public void addProduct(ArrayList<Product> productArrayList){
 
         for (int i = 0; i < productArrayList.size(); i++) {
             Product product = productArrayList.get(i);
@@ -69,7 +69,7 @@ public class Seller {
     {
        productArrayList.remove(productToBeDeleted);
     }
-    public void removeProductArrayList(ArrayList<Product> productArrayList){
+    public void removeProduct(ArrayList<Product> productArrayList){
 
        for (Product product : productArrayList)
        {

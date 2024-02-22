@@ -1,6 +1,5 @@
 package me.madcabbage.shopping_system.product;
-
-import javax.sound.midi.MidiUnavailableException;
+import me.madcabbage.shopping_system.seller.Seller;
 
 public class Product {
     //String id;
@@ -10,10 +9,10 @@ public class Product {
     private String description;
     private int quantity;
     private String imageURl;
-    private String productType; //To categorize products based on type
+    private ProductType productType; //To categorize products based on type
     private boolean isAvailable; //To check if the product is available right now or not.
 
-    public Product(String name, String description, int quantity, String imageURl, String productType, boolean isAvailable){
+    public Product(String name, String description, int quantity, String imageURl, ProductType productType, boolean isAvailable){
         this.name = name;
         this.description = description;
         this.quantity = quantity;
@@ -26,7 +25,7 @@ public class Product {
         this.description = description;
         this.quantity = quantity;
         this.imageURl = "";
-        this.productType = "";
+        this.productType = ProductType.UNCATEGORIZED;
         this.isAvailable = false;
     }
     public Product(String name){
@@ -34,9 +33,8 @@ public class Product {
         this.description = "";
         this.quantity = 0;
         this.imageURl = "";
-        this.productType = "";
+        this.productType = ProductType.UNCATEGORIZED;
         this.isAvailable = false;
-
     }
 
     //Getter methods
@@ -58,7 +56,7 @@ public class Product {
     public String getImageURl() {
         return imageURl;
     }
-    public String getProductType() {
+    public ProductType getProductType() {
         return productType;
     }
 
@@ -83,7 +81,7 @@ public class Product {
     public void setImageURl(String imageURl) {
         this.imageURl = imageURl;
     }
-    public void setProductType(String productType) {
+    public void setProductType(ProductType productType) {
         this.productType = productType;
     }
     public void setQuantity(int quantity) {
