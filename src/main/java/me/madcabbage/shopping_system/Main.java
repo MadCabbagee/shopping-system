@@ -8,8 +8,8 @@ public class Main {
         runConsoleUI();
     }
 
-    private static void runConsoleUI() {
-        ConsoleUI.run();
+    public static void runConsoleUI() {
+        ConsoleUI.show();
     }
 
 
