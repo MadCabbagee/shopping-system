@@ -56,9 +56,7 @@ public class Product {
     public String getImageURl() {
         return imageURl;
     }
-    public ProductType getProductType() {
-        return productType;
-    }
+    public ProductType getProductType() { return productType; }
 
 
 
