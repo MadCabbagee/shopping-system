@@ -16,7 +16,7 @@ public enum ProductType {
     TOYS_AND_GAMES("Toys And Games"),
     UNCATEGORIZED("Uncategorized");
 
-    private final String productName;
+    private String productName;
     private ProductType(String productName) {
         this.productName = productName;
     }
