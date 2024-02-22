@@ -1,18 +1,41 @@
 package me.madcabbage.shopping_system.product;
 
+import javax.sound.midi.MidiUnavailableException;
+
 public class Product {
     //String id;
-    String name;
-    double price;
-    String seller;
-    String description;
-    int quantity;
-    String imageURl;
-    String productType; //To categorize products based on type
-    boolean isAvailable; //To check if the product is available right now or not.
+    private String name;
+    private double price;
+    private Seller seller; //seller object
+    private String description;
+    private int quantity;
+    private String imageURl;
+    private String productType; //To categorize products based on type
+    private boolean isAvailable; //To check if the product is available right now or not.
 
-    Product(){
-
+    public Product(String name, String description, int quantity, String imageURl, String productType, boolean isAvailable){
+        this.name = name;
+        this.description = description;
+        this.quantity = quantity;
+        this.imageURl = imageURl;
+        this.productType = productType;
+        this.isAvailable = isAvailable;
+    }
+    public Product(String name, String description, int quantity){
+        this.name = name;
+        this.description = description;
+        this.quantity = quantity;
+        this.imageURl = "";
+        this.productType = "";
+        this.isAvailable = false;
+    }
+    public Product(String name){
+        this.name = name;
+        this.description = "";
+        this.quantity = 0;
+        this.imageURl = "";
+        this.productType = "";
+        this.isAvailable = false;
 
     }
 
@@ -23,7 +46,7 @@ public class Product {
     public double getPrice() {
         return price;
     }
-    public String getSeller() {
+    public Seller getSeller() {
         return seller;
     }
     public String getDescription() {
@@ -51,7 +74,7 @@ public class Product {
     public void setDescription(String description) {
         this.description = description;
     }
-    public void setSeller(String seller) {
+    public void setSeller(Seller seller) {
         this.seller = seller;
     }
     public void setAvailable(boolean available) {
@@ -70,5 +93,4 @@ public class Product {
     public static void main(String[] args) {
 
     }
-
 }
