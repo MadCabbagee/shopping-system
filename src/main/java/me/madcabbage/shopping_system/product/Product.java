@@ -1,6 +1,5 @@
 package me.madcabbage.shopping_system.product;
 
-import javax.sound.midi.MidiUnavailableException;
 
 public class Product {
     //String id;
