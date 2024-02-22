@@ -22,6 +22,10 @@ public abstract class User {
         return email;
     }
 
+    public String getHashedPassword() {
+        return hashedPassword;
+    }
+
     public String getFirstName() {
         return firstName;
     }
