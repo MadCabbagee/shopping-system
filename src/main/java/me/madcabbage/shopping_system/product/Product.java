@@ -1,5 +1,5 @@
 package me.madcabbage.shopping_system.product;
-
+import me.madcabbage.shopping_system.seller.Seller;
 
 public class Product {
     //String id;
