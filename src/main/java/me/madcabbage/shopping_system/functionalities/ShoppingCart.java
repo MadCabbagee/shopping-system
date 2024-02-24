@@ -70,8 +70,7 @@ public class ShoppingCart {
         return totalPrice;
     }
 
-    //Method to return array of total prices of all the prices of all the products
-    //present in the cart
+    //return array of total prices of all the prices of all the products present in the cart
     private double[] calculateAllItemPrices(){
         double[] pricesArray = new double[productArrayList.size()];
         for (int i = 0; i < productArrayList.size(); i++){
@@ -80,4 +79,14 @@ public class ShoppingCart {
         return pricesArray;
     }
 
+    //return array of all the items name
+    private String[] itemNames(){
+        String[] namesArray = new String[productArrayList.size()];
+        for (int i = 0; i < productArrayList.size(); i++){
+            namesArray[i] = productArrayList.get(i).getName();
+        }
+        return namesArray;
+    }
+
+    
 }
