@@ -20,6 +20,7 @@ public class ShoppingCart {
         this.totalPrice = calculateTotal();
         this.allItemPrices = calculateAllItemPrices();
         this.itemNames = itemNames();
+        this.productsAvailability = productsAvailability();
     }
     public ShoppingCart(Product product){
         ArrayList<Product> productArrayList = new ArrayList<Product>();
@@ -28,6 +29,8 @@ public class ShoppingCart {
         this.totalPrice = calculateTotal();
         this.allItemPrices = calculateAllItemPrices();
         this.itemNames = itemNames();
+        this.productsAvailability = productsAvailability();
+
     }
 
     //Getter Methods
@@ -47,9 +50,14 @@ public class ShoppingCart {
     public String[] getItemNames() {
         return itemNames;
     }
+    public boolean[] getProductsAvailability() {
+        return productsAvailability;
+    }
+    public String[] getProductsDescription() {
+        return productsDescription;
+    }
 
     //Setter Methods
-
     public void setProductArrayList(ArrayList<Product> productArrayList) {
         this.productArrayList = productArrayList;
     }
@@ -125,6 +133,15 @@ public class ShoppingCart {
             availabilityArray[i] = productArrayList.get(i).isAvailable();
         }
         return availabilityArray;
+    }
+
+    //Method to return array of product descriptions
+    public String[] productsDescription(){
+        String[] descriptionsArray = new String[productArrayList.size()];
+        for (int i = 0; i < productArrayList.size(); i++){
+            descriptionsArray[i] = productArrayList.get(i).getDescription();
+        }
+        return descriptionsArray;
     }
 
 }
