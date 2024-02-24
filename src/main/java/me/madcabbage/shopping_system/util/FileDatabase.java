@@ -27,8 +27,25 @@ public class FileDatabase {
     }
 
     public static User getUser(String email) {
-        throw new RuntimeException(FileDatabase.class.getName() + "::getHashedPassword() is not implemented.");
+        try (FileInputStream fis = new FileInputStream(String.valueOf(userDbPath.resolve(email + ".ser")));
+        ObjectInputStream ois = new ObjectInputStream(fis)) {
+            return (User) ois.readObject();
+        }
+        catch (IOException | ClassNotFoundException e) {
+            // intentionally left empty
+            // if exception is thrown method will return null
+        }
+        return null;
     }
-}
+
+    public static boolean saveUser(User user) {
+        try (FileOutputStream fos = new FileOutputStream(String.valueOf(String.valueOf(userDbPath.resolve(user.getEmail() + ".ser"))));
+        ObjectOutputStream oos = new ObjectOutputStream(fos)) {
+            oos.writeObject(user);
+            return true;
+        } catch (IOException e) {
+            return false;
+        }
+    }
 
 }
