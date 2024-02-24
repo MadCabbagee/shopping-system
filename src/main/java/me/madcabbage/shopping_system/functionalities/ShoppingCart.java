@@ -13,7 +13,8 @@ public class ShoppingCart {
     private ArrayList<Product> productArrayList;
     private double[] allItemPrices;
     private String[] itemNames;
-
+    private boolean[] productsAvailability;
+    private String[] productsDescription;
     public ShoppingCart(ArrayList<Product> productArrayList){
         this.productArrayList = productArrayList;
         this.totalPrice = calculateTotal();
@@ -118,8 +119,12 @@ public class ShoppingCart {
     }
 
     //method to show product availability
-    public boolean showAvailability(Product product){
-
+    public boolean[] productsAvailability(){
+        boolean[] availabilityArray = new boolean[productArrayList.size()];
+        for (int i = 0; i < productArrayList.size(); i++){
+            availabilityArray[i] = productArrayList.get(i).isAvailable();
+        }
+        return availabilityArray;
     }
 
 }
