@@ -116,4 +116,10 @@ public class ShoppingCart {
         productArrayList.clear();
         return remaining;
     }
+
+    //method to show product availability
+    public boolean showAvailability(Product product){
+
+    }
+
 }
