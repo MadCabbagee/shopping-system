@@ -44,9 +44,7 @@ public class Product {
     public double getPrice() {
         return price;
     }
-    public Seller getSeller() {
-        return seller;
-    }
+    public Seller getSeller() {return seller;}
     public String getDescription() {
         return description;
     }
@@ -57,8 +55,7 @@ public class Product {
         return imageURl;
     }
     public ProductType getProductType() { return productType; }
-
-
+    public boolean isAvailable() {return isAvailable;}
 
     //Setter Methods
     public void setName(String name) {
