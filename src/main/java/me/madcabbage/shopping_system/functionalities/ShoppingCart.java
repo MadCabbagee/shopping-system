@@ -1,5 +1,4 @@
 package me.madcabbage.shopping_system.functionalities;
-import me.madcabbage.shopping_system.Main;
 import me.madcabbage.shopping_system.product.Product;
 
 import java.util.ArrayList;
@@ -11,26 +10,27 @@ public class ShoppingCart {
     private double totalPrice;
     private double discountedPrice;
     private ArrayList<Product> productArrayList;
-    private double[] allItemPrices;
+    private double[] itemPrices;
     private String[] itemNames;
     private boolean[] productsAvailability;
     private String[] productsDescription;
     public ShoppingCart(ArrayList<Product> productArrayList){
         this.productArrayList = productArrayList;
         this.totalPrice = calculateTotal();
-        this.allItemPrices = calculateAllItemPrices();
+        this.itemPrices = calculateAllItemPrices();
         this.itemNames = itemNames();
         this.productsAvailability = productsAvailability();
+        this.productsDescription = productsDescription();
     }
     public ShoppingCart(Product product){
         ArrayList<Product> productArrayList = new ArrayList<Product>();
         productArrayList.add(product);
         this.productArrayList = productArrayList;
         this.totalPrice = calculateTotal();
-        this.allItemPrices = calculateAllItemPrices();
+        this.itemPrices = calculateAllItemPrices();
         this.itemNames = itemNames();
         this.productsAvailability = productsAvailability();
-
+        this.productsDescription = productsDescription();
     }
 
     //Getter Methods
@@ -44,8 +44,8 @@ public class ShoppingCart {
     public double getDiscountedPrice() {
         return discountedPrice;
     }
-    public double[] getAllItemPrices() {
-        return allItemPrices;
+    public double[] getItemPrices() {
+        return itemPrices;
     }
     public String[] getItemNames() {
         return itemNames;
@@ -127,7 +127,7 @@ public class ShoppingCart {
     }
 
     //method to show product availability
-    public boolean[] productsAvailability(){
+    private boolean[] productsAvailability(){
         boolean[] availabilityArray = new boolean[productArrayList.size()];
         for (int i = 0; i < productArrayList.size(); i++){
             availabilityArray[i] = productArrayList.get(i).isAvailable();
@@ -136,7 +136,7 @@ public class ShoppingCart {
     }
 
     //Method to return array of product descriptions
-    public String[] productsDescription(){
+    private String[] productsDescription(){
         String[] descriptionsArray = new String[productArrayList.size()];
         for (int i = 0; i < productArrayList.size(); i++){
             descriptionsArray[i] = productArrayList.get(i).getDescription();
