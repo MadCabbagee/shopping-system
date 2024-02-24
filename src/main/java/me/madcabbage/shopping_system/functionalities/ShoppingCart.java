@@ -10,32 +10,36 @@ public class ShoppingCart {
     private double totalPrice;
     private double discountedPrice;
     private ArrayList<Product> productArrayList;
+    private double[] allItemPrices;
 
     public ShoppingCart(ArrayList<Product> productArrayList){
         this.productArrayList = productArrayList;
         this.totalPrice = calculateTotal();
+        this.allItemPrices = calculateAllItemPrices();
     }
     public ShoppingCart(Product product){
         ArrayList<Product> productArrayList = new ArrayList<Product>();
         productArrayList.add(product);
         this.productArrayList = productArrayList;
         this.totalPrice = calculateTotal();
+        this.allItemPrices = calculateAllItemPrices();
+
 
     }
 
     //Getter Methods
 
-
     public double getTotalPrice() {
         return totalPrice;
     }
-
     public ArrayList<Product> getProductArrayList() {
         return productArrayList;
     }
-
     public double getDiscountedPrice() {
         return discountedPrice;
+    }
+    public double[] getAllItemPrices() {
+        return allItemPrices;
     }
 
     //Setter Methods
@@ -56,7 +60,7 @@ public class ShoppingCart {
         }
     }
 
-    //Method to calculate total Price
+    //Method to return total Price
     private double calculateTotal(){
         double totalPrice = 0;
         for (int i = 0; i < productArrayList.size(); i++) {
@@ -65,4 +69,15 @@ public class ShoppingCart {
         }
         return totalPrice;
     }
+
+    //Method to return array of total prices of all the prices of all the products
+    //present in the cart
+    private double[] calculateAllItemPrices(){
+        double[] pricesArray = new double[productArrayList.size()];
+        for (int i = 0; i < productArrayList.size(); i++){
+            pricesArray[i] = productArrayList.get(i).getPrice();
+        }
+        return pricesArray;
+    }
+
 }
