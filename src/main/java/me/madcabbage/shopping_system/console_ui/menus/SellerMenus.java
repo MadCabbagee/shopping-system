@@ -10,4 +10,8 @@ public class SellerMenus {
     }
     public static void show() {
     }
+
+    public static void handleSellerMenuOptions() {
+
+    }
 }
