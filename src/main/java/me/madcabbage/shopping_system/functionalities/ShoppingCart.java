@@ -1,4 +1,5 @@
 package me.madcabbage.shopping_system.functionalities;
+import me.madcabbage.shopping_system.Main;
 import me.madcabbage.shopping_system.product.Product;
 
 import java.util.ArrayList;
@@ -11,11 +12,13 @@ public class ShoppingCart {
     private double discountedPrice;
     private ArrayList<Product> productArrayList;
     private double[] allItemPrices;
+    private String[] itemNames;
 
     public ShoppingCart(ArrayList<Product> productArrayList){
         this.productArrayList = productArrayList;
         this.totalPrice = calculateTotal();
         this.allItemPrices = calculateAllItemPrices();
+        this.itemNames = itemNames();
     }
     public ShoppingCart(Product product){
         ArrayList<Product> productArrayList = new ArrayList<Product>();
@@ -23,8 +26,7 @@ public class ShoppingCart {
         this.productArrayList = productArrayList;
         this.totalPrice = calculateTotal();
         this.allItemPrices = calculateAllItemPrices();
-
-
+        this.itemNames = itemNames();
     }
 
     //Getter Methods
@@ -40,6 +42,9 @@ public class ShoppingCart {
     }
     public double[] getAllItemPrices() {
         return allItemPrices;
+    }
+    public String[] getItemNames() {
+        return itemNames;
     }
 
     //Setter Methods
@@ -88,5 +93,13 @@ public class ShoppingCart {
         return namesArray;
     }
 
-    
+    //Method to check out the shopping cart items
+    public double checkOutItems(double userCash)
+    {
+        if (userCash < totalPrice)
+            return -1;
+        double remaining = userCash - totalPrice;
+        productArrayList.clear();
+        return remaining;
+    }
 }
