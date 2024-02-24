@@ -5,6 +5,7 @@ import me.madcabbage.shopping_system.user.BuyerUser;
 import me.madcabbage.shopping_system.user.SellerUser;
 import me.madcabbage.shopping_system.user.User;
 import me.madcabbage.shopping_system.util.Console;
+import me.madcabbage.shopping_system.util.FileDatabase;
 import me.madcabbage.shopping_system.util.Security;
 
 public class RegistrationUI {
@@ -21,6 +22,7 @@ public class RegistrationUI {
         String lastName = Console.prompt("Enter last name:");
         String phoneNumber = Console.prompt("Enter phone number:");
         String password = getValidPassword();
+
         String hashedPassword = Security.hashPassword(password);
         User registered = null;
         switch (accountType) {
@@ -29,6 +31,7 @@ public class RegistrationUI {
             default -> throw new IllegalArgumentException(); // todo create custom exception for invalid account type
         }
         // todo add this user to userDB
+        FileDatabase.saveUser(registered);
     }
 
     private static AccountType getAccountType() {
