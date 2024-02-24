@@ -65,6 +65,19 @@ public class ShoppingCart {
         }
     }
 
+    //product removing methods
+    public void removeProduct(Product productToBeDeleted)
+    {
+        productArrayList.remove(productToBeDeleted);
+    }
+    public void removeProduct(ArrayList<Product> productArrayList){
+
+        for (Product product : productArrayList)
+        {
+            removeProduct(product);
+        }
+    }
+
     //Method to return total Price
     private double calculateTotal(){
         double totalPrice = 0;
@@ -99,6 +112,7 @@ public class ShoppingCart {
         if (userCash < totalPrice)
             return -1;
         double remaining = userCash - totalPrice;
+        //todo add method to decrease item quantity from the database
         productArrayList.clear();
         return remaining;
     }
