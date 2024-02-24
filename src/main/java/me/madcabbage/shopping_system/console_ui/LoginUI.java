@@ -11,7 +11,7 @@ public class LoginUI {
         // disable instantiation because static class.
     }
 
-    public static User loginUser() {
+    public static User handleLogin() {
         Console.print("Login:");
         String email = Console.prompt("Enter email:");
         String password = Console.promptSpaced("Enter password:");
