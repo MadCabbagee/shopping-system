@@ -17,9 +17,9 @@ public class RegistrationUI {
         Console.print("Register:");
         AccountType accountType = getAccountType();
         String email = getValidEmail();
-        String firstName = Console.promptSpaced("Enter username:");
-        String lastName = Console.promptSpaced("Enter last name:");
-        String phoneNumber = Console.promptSpaced("Enter phone number:");
+        String firstName = Console.prompt("Enter first name:");
+        String lastName = Console.prompt("Enter last name:");
+        String phoneNumber = Console.prompt("Enter phone number:");
         String password = getValidPassword();
         String hashedPassword = Security.hashPassword(password);
         User registered = null;
@@ -46,8 +46,8 @@ public class RegistrationUI {
 
     private static String getValidEmail() {
         while (true) {
-            String email1 = Console.promptSpaced("Enter valid email:");
-            String email2 = Console.promptSpaced("Confirm valid email:");
+            String email1 = Console.prompt("Enter valid email:");
+            String email2 = Console.prompt("Confirm valid email:");
             if (email1.equals(email2)) {
                 return email1;
             } else {
@@ -58,7 +58,7 @@ public class RegistrationUI {
 
     private static String getValidPassword() {
         while (true) {
-            String p1 = Console.promptSpaced("Enter desired password:");
+            String p1 = Console.prompt("Enter desired password:");
             String p2 = Console.promptSpaced("Confirm password:");
             if (p1.equals(p2)) {
                 return p1;
