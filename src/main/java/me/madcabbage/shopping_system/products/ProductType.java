@@ -1,4 +1,4 @@
-package me.madcabbage.shopping_system.product;
+package me.madcabbage.shopping_system.products;
 
 public enum ProductType {
     BEAUTY_PRODUCTS("Beauty Products"),
