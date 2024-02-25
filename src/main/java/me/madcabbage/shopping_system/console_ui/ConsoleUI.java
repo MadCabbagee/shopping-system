@@ -30,11 +30,11 @@ public class ConsoleUI {
         // login option selected
         if (mainMenuInput.equals(mainMenuOptions[0])) {
             // todo store current user somewhere globally
-            User loggedIn = LoginUI.handleLogin();
-            if (loggedIn != null) {
+            currentUser = LoginUI.handleLogin();
+            if (currentUser != null) {
                 Console.printSpaced("Logged in successfully");
+                displayMainUserMenu();
             }
-            displayMainUserMenu(loggedIn);
         }
         // register option selected
         else if (mainMenuInput.equals(mainMenuOptions[1])) {
@@ -50,11 +50,8 @@ public class ConsoleUI {
         }
     }
 
-    private static void displayMainUserMenu(User loggedIn) {
-        if (loggedIn == null) {
-            return;
-        }
-        switch (loggedIn.getAccountType()) {
+    private static void displayMainUserMenu() {
+        switch (currentUser.getAccountType()) {
             case Buyer -> BuyerMenus.show();
             case Seller -> SellerMenus.show();
             case Admin -> AdminMenus.show();
