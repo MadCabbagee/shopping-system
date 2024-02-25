@@ -4,7 +4,7 @@ import me.madcabbage.shopping_system.util.Console;
 
 public class BuyerMenus {
 
-    private static final String[] mainMenu = { "Products", "View Cart", "Checkout", "Account Options","Logout" };
+    private static final String[] mainMenu = { "Products", "View Cart", "Checkout", "Account Options", "Logout" };
     private static final String[] productsMenu = { "Browse", "Search", "View details by ID", "Add to cart by ID", "Back" };
     private static final String[] browseMenu = { "Next Page", "Previous Page", "Select Page", "Back" };
     private static final String[] searchMenu = { "By name", "By category", "By seller", "Back" };
