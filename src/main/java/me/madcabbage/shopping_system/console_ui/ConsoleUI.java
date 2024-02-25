@@ -3,11 +3,12 @@ package me.madcabbage.shopping_system.console_ui;
 import me.madcabbage.shopping_system.console_ui.menus.AdminMenus;
 import me.madcabbage.shopping_system.console_ui.menus.BuyerMenus;
 import me.madcabbage.shopping_system.console_ui.menus.SellerMenus;
-import me.madcabbage.shopping_system.user.AccountType;
 import me.madcabbage.shopping_system.user.User;
 import me.madcabbage.shopping_system.util.Console;
 
 public class ConsoleUI {
+
+    private static User currentUser = null;
     private static final String[] mainMenuOptions = { "Login", "Register", "Reset Password", "Exit" };
 
     private static boolean run;
@@ -26,26 +27,30 @@ public class ConsoleUI {
 
     // Main Menu
     public static void handleMainMenuInput(String mainMenuInput) {
+        // login option selected
         if (mainMenuInput.equals(mainMenuOptions[0])) {
             // todo store current user somewhere globally
             User loggedIn = LoginUI.handleLogin();
             if (loggedIn != null) {
                 Console.printSpaced("Logged in successfully");
             }
-            handleAccType(loggedIn);
+            displayMainUserMenu(loggedIn);
         }
+        // register option selected
         else if (mainMenuInput.equals(mainMenuOptions[1])) {
             RegistrationUI.registerUser();
         }
+        // reset password option selected
         else if (mainMenuInput.equals(mainMenuOptions[2])) {
             LoginUI.resetUserPassword();
         }
+        // exit option selected
         else if (mainMenuInput.equals(mainMenuOptions[3])) {
             exit();
         }
     }
 
-    private static void handleAccType(User loggedIn) {
+    private static void displayMainUserMenu(User loggedIn) {
         if (loggedIn == null) {
             return;
         }
