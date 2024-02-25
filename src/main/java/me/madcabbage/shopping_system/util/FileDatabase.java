@@ -1,5 +1,7 @@
 package me.madcabbage.shopping_system.util;
 
+import me.madcabbage.shopping_system.products.Product;
+import me.madcabbage.shopping_system.products.Seller;
 import me.madcabbage.shopping_system.user.User;
 
 import java.io.*;
@@ -57,8 +59,8 @@ public class FileDatabase {
             return null;
         }
         for (File sellerDir : sellerDirs) {
-            File productPath = new File(sellerDir, id + ".ser");
-            if (productPath.exists()) {
+            File productFile = new File(sellerDir, id + ".ser");
+            if (productFile.exists()) {
                 try (FileInputStream fis = new FileInputStream(productFile);
                      ObjectInputStream ois = new ObjectInputStream(fis)) {
                     return (Product) ois.readObject();
@@ -109,7 +111,7 @@ public class FileDatabase {
         Product[] fromSeller = new Product[15];
         for (int i = 0; i < allProducts.length; i++) {
             Product p = allProducts[i];
-            if (p.getSeller.equals(seller)) {
+            if (p.getSeller().equals(seller)) {
                 fromSeller[i - offset] = p;
             } else {
                 offset++;
