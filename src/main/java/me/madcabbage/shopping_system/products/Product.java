@@ -1,8 +1,8 @@
-package me.madcabbage.shopping_system.product;
-import me.madcabbage.shopping_system.seller.Seller;
+package me.madcabbage.shopping_system.products;
 
 public class Product {
-    //String id;
+
+    private String id;
     private String name;
     private double price;
     private Seller seller; //seller object
@@ -38,6 +38,7 @@ public class Product {
     }
 
     //Getter methods
+    public String getId() { return id; }
     public String getName() {
         return name;
     }
@@ -81,9 +82,5 @@ public class Product {
     }
     public void setQuantity(int quantity) {
         this.quantity = quantity;
-    }
-
-    public static void main(String[] args) {
-
     }
 }
