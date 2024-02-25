@@ -1,5 +1,5 @@
-package me.madcabbage.shopping_system.seller;
-import me.madcabbage.shopping_system.product.Product;
+package me.madcabbage.shopping_system.products;
+import me.madcabbage.shopping_system.products.Product;
 import java.util.ArrayList;
 
 
@@ -7,14 +7,14 @@ public class Seller {
     //String id; make an ID for every thing e.g. Shipper ID would start SHP-001
     private String name;
     private String description;
-    private ArrayList<Product> productArrayList; //Array list to add the sellers products
+    private ArrayList<Product> products; //Array list to add the sellers products
 
     //create new seller
    public Seller(String name, String description, ArrayList<Product> productArrayList){
 
        this.name = name;
        this.description = description;
-       this.productArrayList = productArrayList;
+       this.products = productArrayList;
     }
 
     //seller but no product given
@@ -27,8 +27,8 @@ public class Seller {
         //Not sure yet if this works maybe create a function for it
         this.name = name;
         this.description = description;
-        this.productArrayList = new ArrayList<Product>();
-        productArrayList.add(product);
+        this.products = new ArrayList<Product>();
+        products.add(product);
     }
 
     //Getter Methods
@@ -39,7 +39,7 @@ public class Seller {
         return description;
     }
     public ArrayList<Product> getProductArrayList() {
-        return productArrayList;
+        return products;
     }
 
 
@@ -51,12 +51,12 @@ public class Seller {
         this.description = description;
     }
     public void setProductArrayList(ArrayList<Product> productArrayList) {
-        this.productArrayList = productArrayList;
+        this.products = productArrayList;
     }
 
     //adder Methods
     public void addProduct(Product product){
-       productArrayList.add(product);
+       products.add(product);
     }
     public void addProduct(ArrayList<Product> productArrayList){
 
@@ -67,7 +67,7 @@ public class Seller {
     }
     public void removeProduct(Product productToBeDeleted)
     {
-       productArrayList.remove(productToBeDeleted);
+       products.remove(productToBeDeleted);
     }
     public void removeProduct(ArrayList<Product> productArrayList){
 
