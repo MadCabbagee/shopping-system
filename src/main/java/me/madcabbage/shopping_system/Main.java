@@ -14,5 +14,4 @@ public class Main {
         ConsoleUI.show();
     }
 
-
 }
