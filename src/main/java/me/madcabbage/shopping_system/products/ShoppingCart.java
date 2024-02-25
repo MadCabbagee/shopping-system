@@ -1,5 +1,4 @@
-package me.madcabbage.shopping_system.functionalities;
-import me.madcabbage.shopping_system.product.Product;
+package me.madcabbage.shopping_system.products;
 
 import java.util.ArrayList;
 
