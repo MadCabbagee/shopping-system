@@ -5,6 +5,7 @@ import me.madcabbage.shopping_system.products.Seller;
 import me.madcabbage.shopping_system.user.User;
 
 import java.io.*;
+import java.nio.file.FileAlreadyExistsException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
@@ -27,6 +28,8 @@ public class FileDatabase {
             Files.createDirectories(dbPath);
             Files.createDirectory(userDbPath);
             Files.createDirectory(productsDbPath);
+        } catch (FileAlreadyExistsException e) {
+            // intentionally left empty
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -53,6 +56,16 @@ public class FileDatabase {
         }
     }
 
+    private static Product readProduct(Path path) {
+        try (FileInputStream fis = new FileInputStream(path.toFile());
+             ObjectInputStream ois = new ObjectInputStream(fis)) {
+            return (Product) ois.readObject();
+        } catch (IOException | ClassNotFoundException ignored) {
+            // intentionally left empty
+        }
+        return null;
+    }
+
     // todo put each sellers products in separate folder
     public static Product getProduct(int id) {
         File productsDb = new File(productsDbPath.toString());
@@ -63,14 +76,12 @@ public class FileDatabase {
         for (File sellerDir : sellerDirs) {
             File productFile = new File(sellerDir, id + ".ser");
             if (productFile.exists()) {
-                try (FileInputStream fis = new FileInputStream(productFile);
-                     ObjectInputStream ois = new ObjectInputStream(fis)) {
-                    return (Product) ois.readObject();
-                } catch (IOException | ClassNotFoundException ignored) {
-                    // intentionally left empty
-                }
+
             }
+            Product p = readProduct(sellerDir.toPath().resolve(id + ".ser"));
         }
+
+
 
         return null;
     }
@@ -90,19 +101,26 @@ public class FileDatabase {
     public static Product[] getAllProducts() {
         // todo Loop thru each seller folder
         File[] sellerFolders = new File(String.valueOf(productsDbPath)).listFiles();
+        if (sellerFolders == null) {
+            return null;
+        }
         int offset = 0;
 
         Product[] products = new Product[sellerFolders.length];
         for (int i = 0; i < sellerFolders.length; i++) {
-            try {
-                int id = Integer.parseInt(sellerFolders[i].getName());
-                products[i - offset] = getProduct(id);
-            } catch (NumberFormatException ignored) {
-                offset++;
+            File[] productFiles = sellerFolders[i].listFiles();
+            if (productFiles == null || productFiles.length == 0) {
+                continue;
+            }
+            for (int j = 0; j < productFiles.length; j++) {
+                try {
+                    int id = Integer.parseInt(sellerFolders[i].getName());
+                    products[i - offset] = getProduct(id);
+                } catch (NumberFormatException ignored) {
+                    offset++;
+                }
             }
         }
-
-
 
         return products;
     }
