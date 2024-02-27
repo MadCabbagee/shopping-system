@@ -9,27 +9,15 @@ public class ShoppingCart {
     private double totalPrice;
     private double discountedPrice;
     private ArrayList<Product> productArrayList;
-    private double[] itemPrices;
-    private String[] itemNames;
-    private boolean[] productsAvailability;
-    private String[] productsDescription;
     public ShoppingCart(ArrayList<Product> productArrayList){
         this.productArrayList = productArrayList;
         this.totalPrice = calculateTotal();
-        this.itemPrices = calculateAllItemPrices();
-        this.itemNames = itemNames();
-        this.productsAvailability = productsAvailability();
-        this.productsDescription = productsDescription();
     }
     public ShoppingCart(Product product){
         ArrayList<Product> productArrayList = new ArrayList<Product>();
         productArrayList.add(product);
         this.productArrayList = productArrayList;
         this.totalPrice = calculateTotal();
-        this.itemPrices = calculateAllItemPrices();
-        this.itemNames = itemNames();
-        this.productsAvailability = productsAvailability();
-        this.productsDescription = productsDescription();
     }
 
     //Getter Methods
@@ -42,18 +30,6 @@ public class ShoppingCart {
     }
     public double getDiscountedPrice() {
         return discountedPrice;
-    }
-    public double[] getItemPrices() {
-        return itemPrices;
-    }
-    public String[] getItemNames() {
-        return itemNames;
-    }
-    public boolean[] getProductsAvailability() {
-        return productsAvailability;
-    }
-    public String[] getProductsDescription() {
-        return productsDescription;
     }
 
     //Setter Methods
@@ -85,7 +61,6 @@ public class ShoppingCart {
             removeProduct(product);
         }
     }
-
     //Method to return total Price
     private double calculateTotal(){
         double totalPrice = 0;
@@ -95,52 +70,4 @@ public class ShoppingCart {
         }
         return totalPrice;
     }
-
-    //return array of total prices of all the prices of all the products present in the cart
-    private double[] calculateAllItemPrices(){
-        double[] pricesArray = new double[productArrayList.size()];
-        for (int i = 0; i < productArrayList.size(); i++){
-            pricesArray[i] = productArrayList.get(i).getPrice();
-        }
-        return pricesArray;
-    }
-
-    //return array of all the items name
-    private String[] itemNames(){
-        String[] namesArray = new String[productArrayList.size()];
-        for (int i = 0; i < productArrayList.size(); i++){
-            namesArray[i] = productArrayList.get(i).getName();
-        }
-        return namesArray;
-    }
-
-    //Method to check out the shopping cart items
-    public double checkOutItems(double userCash)
-    {
-        if (userCash < totalPrice)
-            return -1;
-        double remaining = userCash - totalPrice;
-        //todo add method to decrease item quantity from the database
-        productArrayList.clear();
-        return remaining;
-    }
-
-    //method to show product availability
-    private boolean[] productsAvailability(){
-        boolean[] availabilityArray = new boolean[productArrayList.size()];
-        for (int i = 0; i < productArrayList.size(); i++){
-            availabilityArray[i] = productArrayList.get(i).isAvailable();
-        }
-        return availabilityArray;
-    }
-
-    //Method to return array of product descriptions
-    private String[] productsDescription(){
-        String[] descriptionsArray = new String[productArrayList.size()];
-        for (int i = 0; i < productArrayList.size(); i++){
-            descriptionsArray[i] = productArrayList.get(i).getDescription();
-        }
-        return descriptionsArray;
-    }
-
 }
