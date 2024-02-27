@@ -89,18 +89,20 @@ public class FileDatabase {
     // todo: cache results of this method
     public static Product[] getAllProducts() {
         // todo Loop thru each seller folder
-        File[] productFiles = new File(String.valueOf(productsDbPath)).listFiles();
+        File[] sellerFolders = new File(String.valueOf(productsDbPath)).listFiles();
         int offset = 0;
 
-        Product[] products = new Product[productFiles.length];
-        for (int i = 0; i < productFiles.length; i++) {
+        Product[] products = new Product[sellerFolders.length];
+        for (int i = 0; i < sellerFolders.length; i++) {
             try {
-                int id = Integer.parseInt(productFiles[i].getName());
+                int id = Integer.parseInt(sellerFolders[i].getName());
                 products[i - offset] = getProduct(id);
             } catch (NumberFormatException ignored) {
                 offset++;
             }
         }
+
+
 
         return products;
     }
