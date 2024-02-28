@@ -1,6 +1,10 @@
 package me.madcabbage.shopping_system.console_ui.menus;
 
+import me.madcabbage.shopping_system.products.Product;
 import me.madcabbage.shopping_system.util.Console;
+import me.madcabbage.shopping_system.util.FileDatabase;
+
+import java.util.Arrays;
 
 public class BuyerMenus {
 
@@ -80,6 +84,18 @@ public class BuyerMenus {
     }
 
     private static void displayAllProducts() {
+        Product[] products = FileDatabase.getAllProducts();
+        if (products == null) {
+            Console.printSpaced("There are currently no products! Please check back later.");
+            return;
+        }
+
+        StringBuilder sb = new StringBuilder();
+        for (Product p : products) {
+            sb.append(p.toString());
+            sb.append('\n');
+        }
+        Console.printSpaced(sb.toString());
     }
 
     private static void displaySearchMenu() {
