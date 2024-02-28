@@ -14,7 +14,10 @@ public class Auth {
     public static User authenticate(String email, String rawPass) {
         User user = FileDatabase.getUser(email);
         try {
-            Security.hashPassword(rawPass).equals(user.getHashedPassword());
+            if(!Security.hashPassword(rawPass).equals(user.getHashedPassword()))
+            {
+                user = null;
+            }
         } catch (NullPointerException e) {
             Console.printSpaced("Invalid login information.");
         } finally {
