@@ -31,8 +31,11 @@ public class ConsoleUI {
         if (mainMenuInput.equals(mainMenuOptions[0])) {
             // todo store current user somewhere globally
             currentUser = LoginUI.handleLogin();
-            if (currentUser != null) {
-                Console.printSpaced("Logged in successfully");
+            if (currentUser == null) {
+                Console.printSpaced("Invalid Login");
+            }
+            else{
+                Console.printSpaced("Login Successful");
                 displayMainUserMenu();
             }
         }
