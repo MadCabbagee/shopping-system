@@ -34,7 +34,7 @@ public class ConsoleUI {
             if (currentUser == null) {
                 Console.printSpaced("Invalid Login");
             }
-            else{
+            else {
                 Console.printSpaced("Login Successful");
                 displayMainUserMenu();
             }
