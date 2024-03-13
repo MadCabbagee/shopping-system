@@ -19,7 +19,7 @@ public class Auth {
                 user = null;
             }
         } catch (NullPointerException e) {
-            Console.printSpaced("Invalid login information.");
+            // intentionally left blank
         } finally {
             return user;
         }

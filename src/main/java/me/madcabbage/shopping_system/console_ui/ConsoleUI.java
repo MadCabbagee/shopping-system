@@ -32,7 +32,7 @@ public class ConsoleUI {
             // todo store current user somewhere globally
             currentUser = LoginUI.handleLogin();
             if (currentUser == null) {
-                Console.printSpaced("Invalid Login");
+                Console.printSpaced("Invalid login information.");
             }
             else {
                 Console.printSpaced("Login Successful");
