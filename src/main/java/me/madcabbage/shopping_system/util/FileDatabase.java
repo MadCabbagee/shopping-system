@@ -8,14 +8,17 @@ import java.io.*;
 import java.nio.file.FileAlreadyExistsException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.Arrays;
+import java.util.stream.Stream;
 
 public class FileDatabase {
 
-    private static final String applicationFolder = ".shoppingSystem";
+    private static final String applicationFolder = "ShoppingSystem";
     private static final String databaseFolder = "database";
     private static final String usersFolder = "users";
     private static final String productsFolder = "products";
-    private static final Path dbPath = Path.of(System.getProperty("user.home")).resolve(applicationFolder).resolve(databaseFolder);
+    private static final Path appData = Path.of(System.getProperty("user.home")).resolve(applicationFolder);
+    private static final Path dbPath = appData.resolve(databaseFolder);
     private static final Path userDbPath = dbPath.resolve(usersFolder);
     private static final Path productsDbPath = dbPath.resolve(productsFolder);
 
@@ -24,15 +27,8 @@ public class FileDatabase {
     }
 
     public static void initializeDirectories() {
-        try {
-            Files.createDirectories(dbPath);
-            Files.createDirectory(userDbPath);
-            Files.createDirectory(productsDbPath);
-        } catch (FileAlreadyExistsException e) {
-            // intentionally left empty
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        Stream.of(appData, dbPath, userDbPath, productsDbPath)
+                .forEach(path -> path.toFile().mkdirs());
     }
 
     public static User getUser(String email) {
