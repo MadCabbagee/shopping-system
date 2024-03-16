@@ -1,8 +1,7 @@
 package me.madcabbage.shopping_system.util;
 
-import me.madcabbage.shopping_system.util.FileDatabase;
-import me.madcabbage.shopping_system.util.Console;
 import me.madcabbage.shopping_system.products.*;
+import me.madcabbage.shopping_system.util.FileDatabase;
 
 public class Search {
 
@@ -17,8 +16,6 @@ public class Search {
         //hide constructor
     }
 
-
-
     //function to search items with similar names
 
     public static Product findProduct(String productName){
@@ -31,4 +28,35 @@ public class Search {
         }
         return null;
     }
+
+    public static Product findProduct(String productName, String filterType, String typeName) {
+        try {
+            switch (filterType) {
+                case "Seller":
+                    return sellerFilter(productName,typeName);
+                case "Product Type":
+                    return productTypeFilter(productName, typeName);
+                default:
+                    break;
+            }
+        } catch (Exception e) {
+            System.err.println("An error occurred: " + e.getMessage());
+        }
+        return null;
+    }
+
+    private static Product productTypeFilter(String productName, String ProductType) {
+        //add its implementation
+        return null;
+    }
+
+    //todo add function to get seller in FileDataBase
+    //todo add function to get all sellers in FileDataBase
+
+    private static Product sellerFilter(String productName, String sellerName) {
+        //add its implementation
+        return null;
+    }
+
+    //todo implement algorithm to find closest input matches
 }
