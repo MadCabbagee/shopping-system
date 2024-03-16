@@ -1,7 +1,6 @@
 package me.madcabbage.shopping_system.util;
 
 import me.madcabbage.shopping_system.products.*;
-import me.madcabbage.shopping_system.util.FileDatabase;
 
 import java.util.*;
 
@@ -63,7 +62,7 @@ public class Search {
     }
 
     //algorithms I got from ChatGPT don't know how they work
-    public static double jaccardSimilarity(String s1, String s2) {
+    public static double jacquardSimilarity(String s1, String s2) {
         Set<Character> set1 = new HashSet<>();
         Set<Character> set2 = new HashSet<>();
 
@@ -96,7 +95,7 @@ public class Search {
 
         // Calculate Jaccard similarity for each element in the array
         for (String element : array) {
-            double similarity = jaccardSimilarity(query, element);
+            double similarity = jacquardSimilarity(query, element);
             similarityMap.put(element, similarity);
         }
 

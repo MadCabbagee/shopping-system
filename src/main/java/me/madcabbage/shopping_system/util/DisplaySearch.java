@@ -13,8 +13,7 @@ public class DisplaySearch {
     public static void searchProduct(){
         String productName = askName("Product");
         Product[] matchingProducts = Search.matchingProducts(productName);
-       //todo add condition to deal with no matches
-        if (false){
+        if (matchingProducts[0] == null){
             Console.printSpaced("Product Does not Exist");
             return;
         }
