@@ -146,4 +146,6 @@ public class Search {
         return matchedProducts;
     }
 
+    //todo implement functions to return products of a particular seller;
+    //todo implement functions to return products of a particular type;
 }
