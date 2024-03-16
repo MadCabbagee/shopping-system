@@ -9,6 +9,7 @@ public class DisplaySearch {
         //hide constructor
     }
 
+    //todo modify function later to return product in after search to add to cart and bill and stuff
     public static void searchProduct(){
         String productName = askName("Product");
         Product[] matchingProducts = Search.matchingProducts(productName);
