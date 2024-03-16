@@ -60,7 +60,7 @@ public class Search {
         return null;
     }
 
-    //todo implement algorithm to find closest input matches
+    //algorithms I got from ChatGPT don't know how they work
     public static double jaccardSimilarity(String s1, String s2) {
         Set<Character> set1 = new HashSet<>();
         Set<Character> set2 = new HashSet<>();
@@ -89,7 +89,7 @@ public class Search {
         return (double) intersectionSize / unionSize;
     }
 
-    public static String[] search(String query, String[] array) {
+    public static String[] searchClosestMatch(String query, String[] array) {
         Map<String, Double> similarityMap = new HashMap<>();
 
         // Calculate Jaccard similarity for each element in the array
@@ -113,6 +113,27 @@ public class Search {
 
         // Return the array if matches are found, otherwise return "No matches"
         return topMatchesArray.length > 0 ? topMatchesArray : new String[]{"No matches"};
+    }
+    
+    public static String[] getAllProductsNames(){
+        Product[] allProducts = FileDatabase.getAllProducts();
+        String[] allProductsNames = new String[allProducts.length];
+        for (int i = 0; i < allProducts.length; i ++){
+            String currentProductName = allProducts[i].getName();
+            allProductsNames[i] = currentProductName;
+        }
+        return allProductsNames;
+    }
+
+    //return an array of matched products
+    public  static Product[] matchingProducts(String productNameToSearch){
+        final int MATCHES = 5;
+        String[] matches = searchClosestMatch(productNameToSearch,getAllProductsNames());
+        Product[] matchedProducts = new Product[MATCHES];
+        for (int i = 0; i < MATCHES; i++) {
+            matchedProducts[i] = findProduct(matchedProducts[i].getName());
+        }
+        return matchedProducts;
     }
 
 }

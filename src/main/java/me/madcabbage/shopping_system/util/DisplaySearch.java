@@ -19,10 +19,15 @@ public class DisplaySearch {
         displayDetails(product);
     }
 
+
+
+
     private static String askName(String nameToAsk){
         String ProductName = Console.promptSpaced("Enter "+nameToAsk+"Name: ");
         return ProductName;
     }
+
+
 
     private static void displayDetails(Product product){
         //todo make a generalized method to displayDetails using switch statements
