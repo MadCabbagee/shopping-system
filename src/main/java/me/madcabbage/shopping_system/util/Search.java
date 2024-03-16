@@ -12,7 +12,7 @@ public class Search {
         //hide constructor
     }
 
-    //function to search items with similar names
+    //function to search items with similar
     public static Product findProduct(String productName){
         Product[] allProducts = FileDatabase.getAllProducts();
         for (int i = 0; i < allProducts.length; i++) {
@@ -142,7 +142,7 @@ public class Search {
         String[] matches = searchClosestMatch(productNameToSearch,getAllProductsNames());
         Product[] matchedProducts = new Product[MATCHES];
         for (int i = 0; i < MATCHES; i++) {
-            matchedProducts[i] = findProduct(matchedProducts[i].getName());
+            matchedProducts[i] = findProduct(matches[i]);
         }
         return matchedProducts;
     }
