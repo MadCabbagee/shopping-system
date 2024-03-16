@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 public class ShoppingCart {
 
-    //BuyerUser buyer;
 
+    //todo add  a buyer i.e BuyerUser buyer then initialize shopping cart with that buyer
     private double totalPrice;
     private double discountedPrice;
     private ArrayList<Product> productArrayList;
