@@ -7,23 +7,25 @@ import java.util.*;
 
 public class Search {
 
-    /*okay need to search items from the dataBase.
-    * first I got to know how are the items stored
-    * then search for items
-    * this is a static class
-    */
-
     private Search()
     {
         //hide constructor
     }
 
     //function to search items with similar names
-
     public static Product findProduct(String productName){
         Product[] allProducts = FileDatabase.getAllProducts();
         for (int i = 0; i < allProducts.length; i++) {
             Product currentProduct = allProducts[i];
+            if (currentProduct.getName() == productName){
+                return currentProduct;
+            }
+        }
+        return null;
+    }
+    public static Product findProduct(String productName, Product[] products){
+        for (int i = 0; i < products.length; i++) {
+            Product currentProduct = products[i];
             if (currentProduct.getName() == productName){
                 return currentProduct;
             }
@@ -120,6 +122,15 @@ public class Search {
         String[] allProductsNames = new String[allProducts.length];
         for (int i = 0; i < allProducts.length; i ++){
             String currentProductName = allProducts[i].getName();
+            allProductsNames[i] = currentProductName;
+        }
+        return allProductsNames;
+    }
+    public static String[] getMatchingProductsNames(Product[] matchingProducts){
+        Product[] allProducts = matchingProducts;
+        String[] allProductsNames = new String[matchingProducts.length];
+        for (int i = 0; i < matchingProducts.length; i ++){
+            String currentProductName = matchingProducts[i].getName();
             allProductsNames[i] = currentProductName;
         }
         return allProductsNames;

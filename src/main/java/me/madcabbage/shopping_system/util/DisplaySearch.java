@@ -11,22 +11,27 @@ public class DisplaySearch {
 
     public static void searchProduct(){
         String productName = askName("Product");
-        Product product = Search.findProduct(productName);
-        if (product == null){
+        Product[] matchingProducts = Search.matchingProducts(productName);
+       //todo add condition to deal with no matches
+        if (false){
             Console.printSpaced("Product Does not Exist");
             return;
         }
-        displayDetails(product);
+        Product chosenProduct = selectFromMatchingProducts(matchingProducts);
+        displayDetails(chosenProduct);
     }
 
-
-
+    private static Product selectFromMatchingProducts(Product[] matchingProducts) {
+        String chosenProductName;
+        chosenProductName = Console.promptWithChoices("Select: ", Search.getMatchingProductsNames(matchingProducts));
+        Product chosenProduct = Search.findProduct(chosenProductName, matchingProducts);
+        return chosenProduct;
+    }
 
     private static String askName(String nameToAsk){
         String ProductName = Console.promptSpaced("Enter "+nameToAsk+"Name: ");
         return ProductName;
     }
-
 
 
     private static void displayDetails(Product product){
@@ -41,4 +46,9 @@ public class DisplaySearch {
         Console.printSpaced("Items Available: "+product.getQuantity());
         Console.printSpaced("Image Url: "+product.getImageURl());
     }
+
+    public static void main(String[] args) {
+        searchProduct();
+    }
+
 }
