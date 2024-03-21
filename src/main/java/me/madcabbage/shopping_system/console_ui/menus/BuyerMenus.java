@@ -3,6 +3,7 @@ package me.madcabbage.shopping_system.console_ui.menus;
 import me.madcabbage.shopping_system.products.Product;
 import me.madcabbage.shopping_system.util.Console;
 import me.madcabbage.shopping_system.util.FileDatabase;
+import me.madcabbage.shopping_system.util.DisplaySearch;
 
 import java.util.Arrays;
 
@@ -109,7 +110,7 @@ public class BuyerMenus {
     private static void handleSearchInput(String input) {
         // by name selected
         if (input.equals(searchMenu[0])) {
-
+            DisplaySearch.searchProduct();
         }
         // by category selected
         else if (input.equals(searchMenu[1])) {

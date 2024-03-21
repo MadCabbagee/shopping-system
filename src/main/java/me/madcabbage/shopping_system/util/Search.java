@@ -110,10 +110,11 @@ public class Search {
         }
 
         // Convert the list to an array
+
         String[] topMatchesArray = topMatches.toArray(new String[0]);
 
-        // Return the array if matches are found, otherwise return "No matches"
-        return topMatchesArray.length > 0 ? topMatchesArray : new String[]{"No matches"};
+        // Return the array if matches are found, otherwise return null
+        return topMatchesArray.length > 0 ? topMatchesArray : null;
     }
     
     public static String[] getAllProductsNames(){
@@ -136,10 +137,14 @@ public class Search {
     }
 
     //return an array of matched products
-    public  static Product[] matchingProducts(String productNameToSearch){
+    public static Product[] matchingProducts(String productNameToSearch){
         final int MATCHES = 5;
         String[] matches = searchClosestMatch(productNameToSearch,getAllProductsNames());
         Product[] matchedProducts = new Product[MATCHES];
+      //if no matched products search the closest match return nulls, so we need to check for that
+        if (matches == null) {
+            return matchedProducts;
+        }
         for (int i = 0; i < MATCHES; i++) {
             matchedProducts[i] = findProduct(matches[i]);
         }
