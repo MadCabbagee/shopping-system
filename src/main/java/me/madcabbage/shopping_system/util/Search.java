@@ -22,6 +22,16 @@ public class Search {
         }
         return null;
     }
+    public static Product findProductByID(String productID){
+        Product[] allProducts = FileDatabase.getAllProducts();
+        for (int i = 0; i < allProducts.length; i++) {
+            Product currentProduct = allProducts[i];
+            if (currentProduct.getId() == productID){
+                return currentProduct;
+            }
+        }
+        return null;
+    }
     public static Product findProduct(String productName, Product[] products){
         for (int i = 0; i < products.length; i++) {
             Product currentProduct = products[i];
@@ -153,8 +163,9 @@ public class Search {
 
     //function to find product ID by name
     public static String findIDByName(String name){
+        if (name == null)
+            return null;
         return  findProduct(name).getId();
-
     }
     //todo implement functions to return products of a particular seller;
     //todo implement functions to return products of a particular type;

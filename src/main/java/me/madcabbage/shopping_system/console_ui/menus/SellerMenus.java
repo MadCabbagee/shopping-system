@@ -12,9 +12,10 @@ public class SellerMenus {
 
     private static final String[] sellerMenuOptions = { "Add Product", "Remove Product", "Edit Product",
             "View Products","Account Options","Logout" };
-    private static final String[] productSelectionMenu = {"Product Name","Product ID"};
+    private static final String[] productSelectionMenu = {"Name","ID"};
     private static final String[] accountOptionsMenu = {"Change Name","Change Password","Delete Account"};
     private static boolean showSellerMenuOptions;
+    private static boolean showAccountOptionMenu;
 
     private SellerMenus() {
         //  Hide implicit constructor
@@ -28,15 +29,40 @@ public class SellerMenus {
     }
 
     public static void handleMainMenuInput(String input) {
-        // Account Details
+        // add a product
         if (input.equals(sellerMenuOptions[0])) {
-            //displayAddProducts();
+            //addProduct();
         }
-        // View cart option selected
-
-        else if (input.equals(sellerMenuOptions[4])) {
+        else if (input.equals(sellerMenuOptions[1])) {
+            //removeProduct();
+        }
+        else if (input.equals(sellerMenuOptions[2])) {
+            //editProduct();
+        }else if (input.equals(sellerMenuOptions[3])) {
+            //viewProduct();
+        }else if (input.equals(sellerMenuOptions[4])) {
+            displayAccountOptionMenu();
+        }
+        else if (input.equals(sellerMenuOptions[5])) {
             showSellerMenuOptions = false;
             // todo set current user to null;
+        }
+    }
+
+    public static void handleAccountOptionMenu(String input) {
+        // Account Details
+        if (input.equals(sellerMenuOptions[0])) {
+            //changeName();
+        }
+
+        else if (input.equals(sellerMenuOptions[1])) {
+            //changePassword();
+        }
+        else if (input.equals(sellerMenuOptions[2])) {
+            //deleteAccount();
+        }
+        else if (input.equals(sellerMenuOptions[3])) {
+            showAccountOptionMenu = false;
         }
     }
 
@@ -52,6 +78,20 @@ public class SellerMenus {
         }
         else
             return null;
+    }
+    private static void displayAccountOptionMenu() {
+        showAccountOptionMenu = true;
+        while (showAccountOptionMenu) {
+            String input = Console.promptWithChoicesSpaced("Choose search type:", accountOptionsMenu);
+            handleAccountOptionMenu(input);
+        }
+    }
+
+    public static Product getProduct(){
+        String input = Console.promptWithChoicesSpaced("Select Product By", productSelectionMenu);
+        String id = handleProductSelectionMenu(input);
+        //find product using id
+        return  Search.findProductByID(id);
     }
 
 
