@@ -1,6 +1,8 @@
 package me.madcabbage.shopping_system.console_ui.menus;
 
+import com.sun.tools.jconsole.JConsoleContext;
 import me.madcabbage.shopping_system.products.Product;
+import me.madcabbage.shopping_system.products.Seller;
 import me.madcabbage.shopping_system.util.Console;
 import me.madcabbage.shopping_system.util.FileDatabase;
 import me.madcabbage.shopping_system.util.Search;
@@ -13,7 +15,7 @@ public class SellerMenus {
     private static final String[] sellerMenuOptions = { "Add Product", "Remove Product", "Edit Product",
             "View Products","Account Options","Logout" };
     private static final String[] productSelectionMenu = {"Name","ID"};
-    private static final String[] accountOptionsMenu = {"Change Name","Change Password","Delete Account"};
+    private static final String[] accountOptionsMenu = {"Change Name","Change Password","Delete Account","Back"};
     private static boolean showSellerMenuOptions;
     private static boolean showAccountOptionMenu;
 
@@ -93,6 +95,18 @@ public class SellerMenus {
         //find product using id
         return  Search.findProductByID(id);
     }
+    private void addProduct(){
+        //String id = idGenerator();
+        String name = Console.promptSpaced("Enter Product Name");
+        int price = Console.promptSpacedInt("Enter Price");
+        //Seller seller = currentSeller();
+        String description = Console.prompt("Enter Description");
+        int quantity = Console.promptInt("Enter Quantity");
+        String url = Console.promptSpaced("URL: ");
+        String  Niga = Console.promptSpaced("Enter Product Type");
 
-
+    }
+    public static void main(String[] args) {
+        show();
+    }
 }
