@@ -108,5 +108,27 @@ public class Console {
         cin.close();
     }
 
+    public static int promptSpacedInt(String prompt) {
+        int answer = promptInt(prompt);
+        System.out.println();
+        return answer;
+    }
+    public static int promptInt(String prompt) {
+        System.out.println(prompt);
+        int promptInt;
+        while (true){
+            try
+            {
+                promptInt = Integer.parseInt(prompt);
+                break;
+            }
+            catch (NumberFormatException e) {
+                // If parsing fails, display an error message and continue the loop
+                System.out.println("Invalid input. Please enter a number.");
+            }
+        }
+
+        return promptInt;
+    }
 
 }
