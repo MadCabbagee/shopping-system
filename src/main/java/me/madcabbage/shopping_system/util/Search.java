@@ -151,6 +151,11 @@ public class Search {
         return matchedProducts;
     }
 
+    //function to find product ID by name
+    public static String findIDByName(String name){
+        return  findProduct(name).getId();
+
+    }
     //todo implement functions to return products of a particular seller;
     //todo implement functions to return products of a particular type;
 }

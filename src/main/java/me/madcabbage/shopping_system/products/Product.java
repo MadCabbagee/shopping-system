@@ -19,6 +19,8 @@ public class Product {
         this.imageURl = imageURl;
         this.productType = productType;
         this.isAvailable = isAvailable;
+       //todo add function to get logged in seller here => this.seller = currentSeller();
+
     }
     public Product(String name, String description, int quantity){
         this.name = name;
@@ -27,6 +29,8 @@ public class Product {
         this.imageURl = "";
         this.productType = ProductType.UNCATEGORIZED;
         this.isAvailable = false;
+        this.seller = null;
+
     }
     public Product(String name){
         this.name = name;
@@ -35,6 +39,7 @@ public class Product {
         this.imageURl = "";
         this.productType = ProductType.UNCATEGORIZED;
         this.isAvailable = false;
+        this.seller = null;
     }
 
     //Getter methods

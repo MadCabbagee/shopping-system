@@ -2,6 +2,8 @@ package me.madcabbage.shopping_system.util;
 import me.madcabbage.shopping_system.products.Product;
 import me.madcabbage.shopping_system.util.Search;
 
+import javax.swing.*;
+
 public class DisplaySearch {
 
 
