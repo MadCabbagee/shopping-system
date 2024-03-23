@@ -2,6 +2,7 @@ package me.madcabbage.shopping_system.console_ui.menus;
 
 import com.sun.tools.jconsole.JConsoleContext;
 import me.madcabbage.shopping_system.products.Product;
+import me.madcabbage.shopping_system.products.ProductType;
 import me.madcabbage.shopping_system.products.Seller;
 import me.madcabbage.shopping_system.util.Console;
 import me.madcabbage.shopping_system.util.FileDatabase;
@@ -33,7 +34,7 @@ public class SellerMenus {
     public static void handleMainMenuInput(String input) {
         // add a product
         if (input.equals(sellerMenuOptions[0])) {
-            //addProduct();
+            addProduct();
         }
         else if (input.equals(sellerMenuOptions[1])) {
             //removeProduct();
@@ -95,16 +96,34 @@ public class SellerMenus {
         //find product using id
         return  Search.findProductByID(id);
     }
-    private void addProduct(){
-        //String id = idGenerator();
+    private static void addProduct(){
+
         String name = Console.promptSpaced("Enter Product Name");
         int price = Console.promptSpacedInt("Enter Price");
-        //Seller seller = currentSeller();
         String description = Console.prompt("Enter Description");
         int quantity = Console.promptInt("Enter Quantity");
         String url = Console.promptSpaced("URL: ");
-        String  Niga = Console.promptSpaced("Enter Product Type");
+        ProductType  productType = typeSelector();
+        String availability = Console.promptWithChoices("Set Availability", new String[]{"Available", "Unavailable"});
+        boolean isAvailable = availability.equals("Available");
+        Product product = new Product(name,description,quantity,url,productType,isAvailable);
+        //save the product
+        FileDatabase.saveProduct(product);
+    }
 
+    private static ProductType typeSelector(){
+        final int TOTAL_PRODUCT_TYPES = ProductType.values().length;
+        String[] types = new String[TOTAL_PRODUCT_TYPES];
+        for (int i = 0; i < TOTAL_PRODUCT_TYPES; i++) {
+            types[i] = ProductType.values()[i].toString();
+        }
+        String selectedType = Console.promptWithChoices("Select Product Type: ",types);
+        for (int i = 0; i < TOTAL_PRODUCT_TYPES; i++) {
+             if (selectedType.equals(ProductType.values()[i].toString())) {
+                 return ProductType.values()[i];
+             }
+        }
+        return null;
     }
     public static void main(String[] args) {
         show();

@@ -19,7 +19,10 @@ public class Product {
         this.imageURl = imageURl;
         this.productType = productType;
         this.isAvailable = isAvailable;
-       //todo add function to get logged in seller here => this.seller = currentSeller();
+        //this.id = idGenerator();
+        //this.seller = currentSeller;
+        // todo add function to create ids and assign them as the product object is initialized
+        //todo add function to get logged in seller here => this.seller = currentSeller();
 
     }
     public Product(String name, String description, int quantity){

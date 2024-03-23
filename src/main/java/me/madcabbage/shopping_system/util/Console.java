@@ -115,20 +115,25 @@ public class Console {
     }
     public static int promptInt(String prompt) {
         System.out.println(prompt);
+
         int promptInt;
         while (true){
             try
             {
-                promptInt = Integer.parseInt(prompt);
+                String userInput = cin.readLine(); // Read user input from the console
+                promptInt = Integer.parseInt(userInput); // Parse the user input as an integer
                 break;
             }
             catch (NumberFormatException e) {
                 // If parsing fails, display an error message and continue the loop
                 System.out.println("Invalid input. Please enter a number.");
+            } catch (IOException e) {
+                // If an IO error occurs, display an error message and continue the loop
+                System.out.println("An error occurred while reading input. Please try again.");
             }
         }
-
         return promptInt;
     }
+
 
 }
