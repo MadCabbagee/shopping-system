@@ -67,6 +67,10 @@ public class ConsoleUI {
         System.exit(0);
     }
 
+    public static User getCurrentUser() {
+        return currentUser;
+    }
+
     // Buyer Menus
 
 

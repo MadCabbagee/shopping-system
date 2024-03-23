@@ -12,7 +12,6 @@ import java.io.File;
 
 public class SellerMenus {
 
-
     private static final String[] sellerMenuOptions = { "Add Product", "Remove Product", "Edit Product",
             "View Products","Account Options","Logout" };
     private static final String[] productSelectionMenu = {"Name","ID"};

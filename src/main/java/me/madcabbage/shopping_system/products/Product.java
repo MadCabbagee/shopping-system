@@ -1,11 +1,15 @@
 package me.madcabbage.shopping_system.products;
 
+import me.madcabbage.shopping_system.console_ui.ConsoleUI;
+import me.madcabbage.shopping_system.user.SellerUser;
+import me.madcabbage.shopping_system.user.User;
+
 public class Product {
 
     private String id;
     private String name;
     private double price;
-    private Seller seller; //seller object
+    private SellerUser seller; //seller object
     private String description;
     private int quantity;
     private String imageURl;
@@ -20,9 +24,9 @@ public class Product {
         this.productType = productType;
         this.isAvailable = isAvailable;
         //this.id = idGenerator();
-        //this.seller = currentSeller;
+        this.seller = getSeller(ConsoleUI.getCurrentUser()) ;
         // todo add function to create ids and assign them as the product object is initialized
-        //todo add function to get logged in seller here => this.seller = currentSeller();
+        //todo add function to get logged in seller here => this.seller = currentSeller;
 
     }
     public Product(String name, String description, int quantity){
@@ -32,7 +36,7 @@ public class Product {
         this.imageURl = "";
         this.productType = ProductType.UNCATEGORIZED;
         this.isAvailable = false;
-        this.seller = null;
+        this.seller = getSeller();
 
     }
     public Product(String name){
@@ -53,7 +57,7 @@ public class Product {
     public double getPrice() {
         return price;
     }
-    public Seller getSeller() {return seller;}
+    public SellerUser getSeller() {return seller;}
     public String getDescription() {
         return description;
     }
@@ -76,7 +80,7 @@ public class Product {
     public void setDescription(String description) {
         this.description = description;
     }
-    public void setSeller(Seller seller) {
+    public void setSeller(SellerUser seller) {
         this.seller = seller;
     }
     public void setAvailable(boolean available) {
@@ -90,5 +94,9 @@ public class Product {
     }
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+    private SellerUser getSeller(User user){
+        SellerUser currentSeller = (SellerUser) user;
+        return currentSeller;
     }
 }
